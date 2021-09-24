@@ -23,11 +23,14 @@ const AuthorPage = () => {
     <div>
     <div>
             <h2>Author galleries</h2>
+           
             {authors.map((gallery) => (
                 <div key={gallery.id}>
                     <div>
-                    <p>{gallery.title}</p>
                       
+                    <p>{gallery.title}</p>
+                     <p>{gallery.description}</p>
+                    
                       
             <strong>Description:</strong> 
             <p>{gallery.description}</p>

@@ -4,6 +4,7 @@ import GalleryService from '../services/GalleryService'
 import { Link } from 'react-router-dom'
 import { selectIsAuthenticated, selectActiveUser} from '../store/auth'
 import {  useSelector } from 'react-redux'
+import Search from '../components/Search'
 
 
 const AllGalleries = () => {
@@ -14,7 +15,7 @@ const AllGalleries = () => {
 
 
 const history = useHistory()
-const [search, setSearch] = useState('')
+
 
 const [totalPages, setTotalPages] = useState(1);
  
@@ -22,6 +23,7 @@ const [page, setPage] = useState(1);
 const [galleries, setGalleries] = useState([])
     
 const[loading, setLoading] = useState(false)
+  const [value, setSearchValue] = useState('');
 
 
  
@@ -30,7 +32,7 @@ const[loading, setLoading] = useState(false)
     useEffect(()=> {
         const fetchGalleries = async () => {
         setLoading(true)
-        const data = await GalleryService.getGalleries(page)
+        const data = await GalleryService.getGalleries(page,value)
        
         setTotalPages(data.last_page);
         setGalleries([...galleries,...data.data]);
@@ -63,11 +65,23 @@ const[loading, setLoading] = useState(false)
       history.push('/galleries');
 
 }
+  const handleSearchCallback = async (searchValue) => {
+    setSearchValue(searchValue);
+
+    setLoading(true);
+    
+    const data = await GalleryService.getGalleries(page, value);
+        setTotalPages(data.last_page);
+    
+    setGalleries(data.data);
+    setLoading(false);
+  }
 
 	
     return (
         <div>
             <h3>All galleries</h3>
+            <Search handleCallback={handleSearchCallback} />
 
             <div>
               
