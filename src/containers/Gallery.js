@@ -54,12 +54,12 @@ const Gallery = () => {
 
 
     return (
-        <div>
+        <div className="container">
             <h2>Gallery</h2>
         {gallery.user ? ( <Link to=""> <p>Author: {gallery.user.firstname} {gallery.user.lastname}</p></Link>  
 ) : 'unknown'}
-            <h2>{gallery.title}</h2>
-            <p>{gallery.description}</p>
+            <h2> <strong>Title:</strong>  {gallery.title}</h2>
+            <p><strong>Description:</strong> {gallery.description}</p>
 
              <div>
              <Carousel>

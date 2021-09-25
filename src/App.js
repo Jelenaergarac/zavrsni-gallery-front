@@ -64,9 +64,9 @@ function App() {
           <Gallery/>
           </Route>
           
-         <Route exact path="/creategalleries">
+         <PrivateRoute exact path="/creategalleries">
           <CreateNewGallery/>
-          </Route>
+          </PrivateRoute>
                    <Route exact path="/author/:id">
             <AuthorPage />
           </Route>
@@ -75,10 +75,10 @@ function App() {
             </PrivateRoute>
 
       
-         <Route exact path="/edit/:id">
+         <PrivateRoute exact path="/edit/:id">
           <CreateNewGallery/>
 
-        </Route>
+        </PrivateRoute>
         
         <Route  path="/">
             <Redirect to="/galleries" />

@@ -30,17 +30,24 @@ button {
 
 }
 
-nav{
-  display:flex;
+nav {
+  display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
-li{
+li {
   list-style: none;
 }
 
-a{
+  ul {
+    list-style-type: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+
+a {
   color: black;
   text-decoration: none;
   margin-left: 10px;

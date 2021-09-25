@@ -30,7 +30,7 @@ const history = useHistory()
       )}
                 {isAuthenticated ? (
                 <>
-                    <button onClick={handleLogout}>Logout</button>
+                    <button className="btn btn-primary" onClick={handleLogout}>Logout</button>
                     <li><Link to="/creategalleries">
                    Add New Gallery
                    </Link></li>

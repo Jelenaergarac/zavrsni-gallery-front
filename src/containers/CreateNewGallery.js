@@ -76,7 +76,8 @@ const CreateNewGallery = () => {
     
 
     return (
-           <div>
+           <div className="row justify-content-center ">
+             <div className="col-md-3 shadow-lg p-3 mb-5 bg-white rounded">
             <h2>Add New Gallery</h2>
             
       <form
@@ -84,6 +85,7 @@ const CreateNewGallery = () => {
         onSubmit={handleSubmit}
       >
         <input
+         className="form-control"
           required
           minLength={2}
           value={newGallery.title}
@@ -94,6 +96,7 @@ const CreateNewGallery = () => {
           }
         />
         <input
+         className="form-control"
           required
           maxLength={1000}
           value={newGallery.description}
@@ -104,26 +107,28 @@ const CreateNewGallery = () => {
         />
      {imageList.map((x, i) => (
         <div key={i} className="form-group">
-          <label htmlFor="imageUrl">Image</label>
-          <input type="url" 
+       
+          <input 
+           className="form-control"
+          type="url" 
            id="imageUrl"
             name="imageUrl"
              placeholder="Image url"
               value={x.imageUrl}
                onChange={e => handleInput(e, i)} />
           <div>
-            {imageList.length !== 1 && <button
+            {imageList.length !== 1 && <button className="btn btn-success"
               className="mr10"
               onClick={() => removeOnClick(i)}>Remove</button>}
-            {imageList.length - 1 === i && <button onClick={addOnClick}>Add</button>}
+            {imageList.length - 1 === i && <button className="btn btn-success" onClick={addOnClick}>Add</button>}
           </div>
         </div>))}
         
         
-<button>Add Gallery</button>        
-<button onClick={handleCancel}>Cancel</button>
+<button className="btn btn-success">Add Gallery</button>        
+<button className="btn btn-success" onClick={handleCancel}>Cancel</button>
       </form>
-
+</div>
       
         </div>
    

@@ -89,10 +89,11 @@ const[loading, setLoading] = useState(false)
                      {galleries.map((gallery)=> (
                          <>
                        <Link key={gallery.id} to ={`galleries/${gallery.id}`}>
-                     <p>{gallery.title}</p>
+                     <p><strong>Title</strong> {gallery.title}</p>
                      <Link to={`author/${gallery.user.id}`}>
-                     <p>{gallery.user.firstname} {gallery.user.lastname}</p>
+                     <p> <strong>Author:</strong> {gallery.user.firstname} {gallery.user.lastname} </p>
                      </Link>
+                     <p><strong>Description: :</strong>{gallery.description}</p>
                  
             <img style={{ width:"500px" }} src={gallery.images.length ? gallery.images[0].imageUrl : ''}/>
                        </Link>
