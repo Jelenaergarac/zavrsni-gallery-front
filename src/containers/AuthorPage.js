@@ -22,7 +22,7 @@ const AuthorPage = () => {
   return (
     <div>
     <div>
-            <h2>Author galleries</h2>
+            <h2>Author's galleries</h2>
            {authors.length ? (
  <div>
               {authors.map((gallery) => (
