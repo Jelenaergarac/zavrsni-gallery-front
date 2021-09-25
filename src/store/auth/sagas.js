@@ -26,6 +26,7 @@ function* handleLogin(action){
         yield put(setToken(token))
     }catch(error){
         console.error(error)
+        alert('please, check your credentials')
     }
 }
 

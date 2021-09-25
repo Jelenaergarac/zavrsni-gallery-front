@@ -1,6 +1,6 @@
-import logo from './logo.svg';
+
 import './App.css';
-import { useState } from 'react';
+
 import Register from './containers/Register'
 import Login from './containers/Login';
 import PrivateRoute from './components/shared/PrivateRoute'
@@ -9,7 +9,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
+
   Redirect
 } from "react-router-dom";
 import { useEffect } from 'react';
@@ -20,7 +20,7 @@ import Navbar from './components/Navbar';
 import AllGalleries from './containers/AllGalleries';
 import Gallery from './containers/Gallery';
 import CreateNewGallery from './containers/CreateNewGallery';
-import Pagination from 'react-js-pagination';
+
 import MyGalleries from './containers/MyGalleries';
 import store from './store'
 import AuthorPage from './containers/AuthorPage'
@@ -30,8 +30,6 @@ function App() {
 
  
 
-  const dispatch = useDispatch();
-   const isAuthenticated = useSelector(selectIsAuthenticated)
 
   useEffect(() => {
     if (localStorage.getItem("token")) {

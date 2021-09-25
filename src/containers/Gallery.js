@@ -6,6 +6,8 @@ import {  useSelector } from 'react-redux'
 import { selectIsAuthenticated, selectActiveUser} from '../store/auth'
 import AddComment from '../components/AddComment';
 import { Link } from 'react-router-dom';
+import { Carousel } from "react-bootstrap";
+
 const Gallery = () => {
     const [gallery, setGallery]= useState([]);
     const {id} = useParams()
@@ -60,19 +62,22 @@ const Gallery = () => {
             <p>{gallery.description}</p>
 
              <div>
-              {gallery.images || gallery.user ?
-     <p>
-          {gallery.images.map((image) => (
-              <div 
-              key={image.id}
-              >
-                  <a target="_blank" href={image.imageUrl}><img src={image.imageUrl} style={{ width:"500px" }} /></a> 
-                  
-              </div>
-          ))}
-    </p>
-      : "no photos yet"
-      }
+             <Carousel>
+      {gallery.images && gallery.images.length
+          ? gallery.images.map((image, index) => (
+              <Carousel.Item key={image.id}>
+                <a key={index} target="_blank" rel="noreferrer" href={image.imageUrl}>
+                  <img
+                  style={{ width:"500px" }}
+                    className="single-page--img"
+                    src={image.imageUrl}
+                    alt={image.imageUrl}
+                  />
+                </a>
+              </Carousel.Item>
+            ))
+          : "This post dosen't have image"}
+      </Carousel>
         </div>
          
             <AddComment
@@ -95,7 +100,7 @@ const Gallery = () => {
            
           </li>
         ))}
-      </ul> : ''
+      </ul> : 'no comments yet'
       }
             
             

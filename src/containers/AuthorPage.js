@@ -11,7 +11,7 @@ const AuthorPage = () => {
   useEffect(() => {
     const fetchAuthor = async () => {
       const data = await GalleryService.getMyGalleries(id);
-      console.log('jeca',data)
+  
       
       setAuthors(data);
     }
@@ -23,8 +23,9 @@ const AuthorPage = () => {
     <div>
     <div>
             <h2>Author galleries</h2>
-           
-            {authors.map((gallery) => (
+           {authors.length ? (
+ <div>
+              {authors.map((gallery) => (
                 <div key={gallery.id}>
                     <div>
                       
@@ -44,6 +45,10 @@ const AuthorPage = () => {
                 
             </div>)
             )}
+           </div>
+           ) : "no galleris"}
+          
+           
 
         </div>
      

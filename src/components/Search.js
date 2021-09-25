@@ -12,6 +12,7 @@ const Search = ({handleCallback}) => {
 
 
     const handleSearch = async () => {
+      
     
       handleCallback(searchValue);
     };

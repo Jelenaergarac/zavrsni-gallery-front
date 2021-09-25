@@ -10,7 +10,6 @@ import Search from '../components/Search'
 const AllGalleries = () => {
 
 
-   const isAuthenticated = useSelector(selectIsAuthenticated)
      const activeUser = useSelector(selectActiveUser)
 
 
@@ -44,7 +43,7 @@ const[loading, setLoading] = useState(false)
           }
         fetchGalleries();
 
-    },[page])
+    },[page,value])
          
     const deleteGallery = async(id) => {
 
@@ -67,6 +66,7 @@ const[loading, setLoading] = useState(false)
 }
   const handleSearchCallback = async (searchValue) => {
     setSearchValue(searchValue);
+    setPage(1)
 
     setLoading(true);
     
@@ -79,9 +79,10 @@ const[loading, setLoading] = useState(false)
 
 	
     return (
-        <div>
+        <div className="container">
+          
             <h3>All galleries</h3>
-            <Search handleCallback={handleSearchCallback} />
+            <Search  handleCallback={handleSearchCallback} />
 
             <div>
               

@@ -22,8 +22,8 @@ const AddComment = ({galleryId, addNewCommentCallback}) => {
     }
     return (
         <div>
-           
-                   <form onSubmit={addComment}>
+           {isAuthenticated ? (
+                     <form onSubmit={addComment}>
                 <input
                 type="text"
                 value={newComment.textarea}
@@ -32,6 +32,8 @@ const AddComment = ({galleryId, addNewCommentCallback}) => {
               
                 <button>Add Comment</button>
             </form>
+           ) : ''}
+             
       
             
             

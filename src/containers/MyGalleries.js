@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import GalleryService from '../services/GalleryService'
-import { selectActiveUser, selectIsAuthenticated, setActiveUser } from '../store/auth'
+import { selectActiveUser } from '../store/auth'
 
 const MyGalleries = () => {
 
-    const [galleries, setGalleries] = useState([])
+ const [galleries, setGalleries] = useState([])
     
-    const activeUser = useSelector(selectActiveUser)
+ const activeUser = useSelector(selectActiveUser)
 
     useEffect(()=> {
         const fetchMyGallery = async ()=> {
@@ -15,21 +15,22 @@ const MyGalleries = () => {
             return
         }
         const data = await GalleryService.getMyGalleries(activeUser.id)
-        console.log('my gallery', data)
-        
         setGalleries(data)
         }
         fetchMyGallery()
+        
+        
         
     },[activeUser])
 
     
     return (
-        <div>
-            <div>
+        <div className="container">
+            <div className="row">
             <h1>My Galleries</h1>
-            {galleries.map((gallery)=> (
-                <div>
+            {galleries.length ? (
+          <div>   {galleries.map((gallery, index)=> (
+                <div key={index}>
                     <span>Title</span>
                     <p>{gallery.title}</p>
                      <span>Description</span>
@@ -39,20 +40,18 @@ const MyGalleries = () => {
             
                 src={gallery.images.length ? gallery.images[0].imageUrl : "no photos"}
               />  : "no photos"}
-
-
-     
-                </div>
-
-                
-                  
-              
-            ))}
+               </div>
+                ))}
             </div>
+            ): "no galleries"}
+           
             <div>
+
+            </div>
+         
     
             
-            </div>
+        </div>
         </div>
     )
 }
